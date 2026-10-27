@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campo de Tiro GSAP | Interactive Shooting Range</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Escenario Principal -->
+    <div id="game-container">
+
+        <!-- Luces festivas superiores de feria -->
+        <div class="canopy-lights">
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+            <div class="bulb"></div>
+        </div>
+
+        <!-- HUD Superior -->
+        <header class="hud-header">
+            <div class="hud-group">
+                <div class="hud-card">
+                    <span class="hud-label">Puntos</span>
+                    <span id="hud-score" class="hud-value">0</span>
+                </div>
+                <div class="hud-card">
+                    <span class="hud-label">Racha</span>
+                    <span id="hud-combo" class="hud-value">x0</span>
+                </div>
+                <div class="hud-card">
+                    <span class="hud-label">Precisión</span>
+                    <span id="hud-accuracy" class="hud-value">100%</span>
+                </div>
+            </div>
+
+            <div class="hud-group">
+                <button id="btn-toggle-mode" class="btn-control" title="Alternar movimiento en la línea">
+                    <span>🎯</span>
+                    <span id="mode-text">Línea: Oscilante</span>
+                </button>
+                <button id="btn-toggle-sound" class="btn-control" title="Activar/Desactivar sonido">
+                    <span id="sound-icon">🔊</span>
+                    <span>Sonido</span>
+                </button>
+                <button id="btn-reset" class="btn-control" title="Reiniciar partida">
+                    <span>🔄</span>
+                    <span>Reiniciar</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Galería de Tiro: Riel y Línea de Círculos -->
+        <main class="shooting-range" id="shooting-range">
+            <div class="rail-track-container" id="rail-track">
+                <!-- Riel de acero horizontal superior -->
+                <div class="steel-rail"></div>
+
+                <!-- Línea de blancos circulares -->
+                <div class="target-line" id="target-line">
+                    <!-- Los círculos se generan dinámicamente con JS/GSAP -->
+                </div>
+            </div>
+
+            <!-- Mostrador inferior de madera de la caseta -->
+            <div class="range-countertop"></div>
+        </main>
+
+        <!-- HUD Inferior: Munición y Leyenda -->
+        <footer class="hud-footer">
+            <div class="ammo-container">
+                <div class="ammo-row" id="ammo-row">
+                    <!-- 6 balas generadas por JS -->
+                </div>
+                <div class="reload-prompt">
+                    Dispara con <kbd>Click</kbd> • Recarga con <kbd>R</kbd> o <span id="btn-manual-reload" style="cursor:pointer; color:var(--neon-gold); text-decoration:underline;">clic aquí</span>
+                </div>
+            </div>
+
+            <div class="legend-card">
+                <div class="legend-item">
+                    <div class="legend-dot" style="background:#e6e6e6; border:1px solid #000;"></div>
+                    <span>Exterior: 25 pts</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background:#d92525;"></div>
+                    <span>Medio: 50 pts</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background:#ffcc00;"></div>
+                    <span>Diana: 100 pts</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background:linear-gradient(135deg, #ffd700, #ff3344);"></div>
+                    <span>Bonus: 250 pts</span>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Cartel de alerta cuando se agota el tambor -->
+        <div id="reload-overlay-alert">¡Presiona R para recargar!</div>
+
+        <!-- Mira telescópica personalizada -->
+        <div id="crosshair">
+            <div class="crosshair-reticle">
+                <div class="ch-circle"></div>
+                <div class="ch-dot"></div>
+                <div class="ch-top ch-line"></div>
+                <div class="ch-bottom ch-line"></div>
+                <div class="ch-left ch-line"></div>
+                <div class="ch-right ch-line"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <!-- Módulos de la aplicación -->
+    <script src="js/audio.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
